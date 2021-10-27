@@ -7,6 +7,10 @@ import { auth } from '../../firebase/firebase.utils';
 import './header.styles.scss';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { createStructuredSelector } from 'reselect';
+
 function Header({ currentUser, hidden }) {
     return (
         <div className='header'>
@@ -33,9 +37,10 @@ function Header({ currentUser, hidden }) {
     )
 }
 
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-    currentUser,
-    hidden
+// if we have 5 or 6 selectors then we need to use createStructuredSelector
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser,
+    hidden: selectCartHidden,
 });
 
 export default connect(mapStateToProps)(Header);
