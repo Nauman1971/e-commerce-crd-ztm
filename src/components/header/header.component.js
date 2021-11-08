@@ -12,7 +12,7 @@ import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer } from './
 import { signoutStart } from '../../redux/user/user.actions';
 
 
-function Header({ currentUser, hidden, signoutStart }) {
+function Header({ currentUser, hidden, signOutStart }) {
     return (
         <HeaderContainer>
             <LogoContainer to='/'>
@@ -27,7 +27,7 @@ function Header({ currentUser, hidden, signoutStart }) {
                 </OptionLink>
                 {
                     currentUser ?
-                        <OptionLink as='div' onClick={signoutStart}>SIGN OUT</OptionLink>
+                        <OptionLink as='div' onClick={signOutStart}>SIGN OUT</OptionLink>
                         :
                         <OptionLink to='/signin'>SIGN IN </OptionLink>
                 }
